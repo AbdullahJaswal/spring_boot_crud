@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>Papers Home</title>
+</head>
+<body style="font-family: Calibri, sans-serif">
+<h3>Papers:</h3>
+<table border="1"
+       style="border: 1px solid black; border-collapse: collapse; text-align: center; width: 900px">
+    <thead>
+    <tr>
+        <th>Paper ID</th>
+        <th>Name</th>
+        <th>End Date</th>
+        <th>Start Date</th>
+        <th>Status</th>
+        <th>Subject ID</th>
+        <th>Subject Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="pap: ${paper}">
+        <td th:text="${pap.paperId}"></td>
+        <td th:text="${pap.paperName}"></td>
+        <td th:text="${pap.endDate}"></td>
+        <td th:text="${pap.startDate}"></td>
+        <td th:text="${pap.status}"></td>
+        <td th:text="${pap.subject.subjectId}"></td>
+        <td th:text="${pap.subject.name}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+
+<h3>Add Paper:-</h3>
+<form action="#" th:action="@{/addPaper}" th:object="${paperEntity}" th:method="post">
+    <table style="border-collapse: collapse; border: 0; width: 600px">
+        <thead>
+        <tbody>
+        <tr>
+            <td>Name:</td>
+            <td><label><input type="text" th:field="*{paperName}"></label></td>
+        </tr>
+        <tr>
+            <td>End Date:</td>
+            <td><label><input type="date" th:field="*{endDate}"></label></td>
+        </tr>
+        <tr>
+            <td>Start Date:</td>
+            <td><label><input type="date" th:field="*{startDate}"></label></td>
+        </tr>
+        <tr>
+            <td>Status:</td>
+            <td><label><input type="text" th:field="*{status}"></label></td>
+        </tr>
+        <tr>
+            <td>Subject ID:</td>
+            <td><label><input type="number" th:field="*{subject.subjectId}"></label></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Add Paper"></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+<br>
+
+<h3>Search Paper</h3>
+<form action="/getPaper">
+    Search Paper ID: <label><input type="number" name="paperId"></label>
+    <input type="submit" value="Search Paper">
+</form>
+
+<br>
+
+<h3>Delete Paper</h3>
+<form action="/deletePaper">
+    Delete Paper ID: <label><input type="number" name="paperId"></label>
+    <input type="submit" value="Delete Paper">
+</form>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>Questions Home</title>
+</head>
+<body style="font-family: Calibri, sans-serif">
+<h3>Questions:</h3>
+<table border="1"
+       style="border: 1px solid black; border-collapse: collapse; text-align: center; width: 900px">
+    <thead>
+    <tr>
+        <th>Question ID</th>
+        <th>Question</th>
+        <th>Paper ID</th>
+        <th>Paper Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ques: ${question}">
+        <td th:text="${ques.questionId}"></td>
+        <td th:text="${ques.question}"></td>
+        <td th:text="${ques.paper.paperId}"></td>
+        <td th:text="${ques.paper.paperName}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+
+<h3>Add Question:-</h3>
+<form action="#" th:action="@{/addQuestion}" th:object="${questionEntity}" th:method="post">
+    <table style="border-collapse: collapse; border: 0; width: 600px">
+        <thead>
+        <tbody>
+        <tr>
+            <td>Question:</td>
+            <td><label><input type="text" th:field="*{question}"></label></td>
+        </tr>
+        <tr>
+            <td>Paper ID:</td>
+            <td><label><input type="number" th:field="*{paper.paperId}"></label></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Add Question"></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+<br>
+
+<h3>Search Question</h3>
+<form action="/getQuestion">
+    Search Question ID: <label><input type="number" name="questionId"></label>
+    <input type="submit" value="Search Question">
+</form>
+
+<br>
+
+<h3>Delete Question</h3>
+<form action="/deleteQuestion">
+    Delete Question ID: <label><input type="number" name="questionId"></label>
+    <input type="submit" value="Delete Question">
+</form>
+</body>
+</html>

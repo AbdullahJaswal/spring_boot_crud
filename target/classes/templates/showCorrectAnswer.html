@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>Correct Answer</title>
+</head>
+<body style="font-family: Calibri, sans-serif">
+<table border="1"
+       style="margin: auto; border: 1px solid black; border-collapse: collapse; text-align: center; width: 900px">
+    <thead>
+    <tr>
+        <th>Correct Answer ID</th>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:object="${cAns}">
+        <td th:text="*{correctAnswerID}"></td>
+        <td th:text="*{question.questionId}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>Answers Home</title>
+</head>
+<body style="font-family: Calibri, sans-serif">
+<h3>Answers:</h3>
+<table border="1"
+       style="border: 1px solid black; border-collapse: collapse; text-align: center; width: 900px">
+    <thead>
+    <tr>
+        <th>Answer ID</th>
+        <th>Answer</th>
+        <th>Question ID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ans: ${answer}">
+        <td th:text="${ans.answerId}"></td>
+        <td th:text="${ans.answer}"></td>
+        <td th:text="${ans.question.questionId}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+
+<h3>Add Answer:-</h3>
+<form action="#" th:action="@{/addAnswer}" th:object="${answerEntity}" th:method="post">
+    <table style="border-collapse: collapse; border: 0; width: 600px">
+        <thead>
+        <tbody>
+        <tr>
+            <td>Answer:</td>
+            <td><label><input type="text" th:field="*{answer}"></label></td>
+        </tr>
+        <tr>
+            <td>Question ID:</td>
+            <td><label><input type="number" th:field="*{question.questionId}"></label></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Add Answer"></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+<br>
+
+<h3>Search Answer</h3>
+<form action="/getAnswer">
+    Search Answer ID: <label><input type="number" name="answerId"></label>
+    <input type="submit" value="Search Answer">
+</form>
+
+<br>
+
+<h3>Delete Answer</h3>
+<form action="/deleteAnswer">
+    Delete Answer ID: <label><input type="number" name="answerId"></label>
+    <input type="submit" value="Delete Answer">
+</form>
+</body>
+</html>

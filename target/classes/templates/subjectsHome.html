@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>Subjects Home</title>
+</head>
+<body style="font-family: Calibri, sans-serif">
+<h3>Subjects:</h3>
+<table border="1"
+       style="border: 1px solid black; border-collapse: collapse; text-align: center; width: 900px">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="sub: ${subject}">
+        <td th:text="${sub.subjectId}"></td>
+        <td th:text="${sub.name}"></td>
+        <td th:text="${sub.code}"></td>
+        <td th:text="${sub.description}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+
+<h3>Add Subject:-</h3>
+<form action="#" th:action="@{/addSubject}" th:object="${subjectEntity}" th:method="post">
+    <table style="border-collapse: collapse; border: 0; width: 600px">
+        <thead>
+        <tbody>
+        <tr>
+            <td>Name:</td>
+            <td><label><input type="text" th:field="*{name}"></label></td>
+        </tr>
+        <tr>
+            <td>Code:</td>
+            <td><label><input type="text" th:field="*{code}"></label></td>
+        </tr>
+        <tr>
+            <td>Description:</td>
+            <td><label><input type="text" th:field="*{description}"></label></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Add Subject"></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+<br>
+
+<h3>Search Subject</h3>
+<form action="/getSubject">
+    Search Subject ID: <label><input type="number" name="subjectId"></label>
+    <input type="submit" value="Search Subject">
+</form>
+
+<br>
+
+<h3>Delete Subject</h3>
+<form action="/deleteSubject">
+    Delete Subject ID: <label><input type="number" name="subjectId"></label>
+    <input type="submit" value="Delete Subject">
+</form>
+</body>
+</html>

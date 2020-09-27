@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>Correct Answers Home</title>
+</head>
+<body style="font-family: Calibri, sans-serif">
+<h3>Correct Answers:</h3>
+<table border="1"
+       style="border: 1px solid black; border-collapse: collapse; text-align: center; width: 900px">
+    <thead>
+    <tr>
+        <th>Correct Answer ID</th>
+        <th>Question ID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cAns: ${correctAnswer}">
+        <td th:text="${cAns.correctAnswerID}"></td>
+        <td th:text="${cAns.question.questionId}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+
+<h3>Add Correct Answer:-</h3>
+<form action="#" th:action="@{/addCorrectAnswer}" th:object="${correctAnswerEntity}" th:method="post">
+    <table style="border-collapse: collapse; border: 0; width: 600px">
+        <thead>
+        <tbody>
+        <tr>
+            <td>Question ID:</td>
+            <td><label><input type="number" th:field="*{question.questionId}"></label></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Add CorrectAnswer"></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+<br>
+
+<h3>Search CorrectAnswer</h3>
+<form action="/getCorrectAnswer">
+    Search CorrectAnswer ID: <label><input type="number" name="correctAnswerId"></label>
+    <input type="submit" value="Search CorrectAnswer">
+</form>
+
+<br>
+
+<h3>Delete CorrectAnswer</h3>
+<form action="/deleteCorrectAnswer">
+    Delete CorrectAnswer ID: <label><input type="number" name="correctAnswerId"></label>
+    <input type="submit" value="Delete CorrectAnswer">
+</form>
+</body>
+</html>

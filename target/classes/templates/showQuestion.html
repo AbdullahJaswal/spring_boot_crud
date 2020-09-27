@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>Question</title>
+</head>
+<body style="font-family: Calibri, sans-serif">
+<table border="1"
+       style="margin: auto; border: 1px solid black; border-collapse: collapse; text-align: center; width: 900px">
+    <thead>
+    <tr>
+        <th>Question ID</th>
+        <th>Question</th>
+        <th>Paper ID</th>
+        <th>Paper Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:object="${ques}">
+        <td th:text="*{questionId}"></td>
+        <td th:text="*{question}"></td>
+        <td th:text="*{paper.paperId}"></td>
+        <td th:text="*{paper.paperName}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
